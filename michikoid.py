@@ -32,6 +32,7 @@ def print_menu(clear=True):
 # ------------------------------------------------- #
 def make_request(host, port, request):
     # Set number of requests:
+    print("\n")
     print("[+] Set the total number of requests")
     print(" * 0: Send continuously.")
     print(" * 1: Default")
@@ -48,6 +49,7 @@ def make_request(host, port, request):
         delay = 0.5
 
     # Print Request:
+    print("\n")
     print("[+] Your Request:")
     print(request)
     print("\n")
