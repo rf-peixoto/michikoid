@@ -61,7 +61,7 @@ def make_request(host, port, request):
                 # Send:
                 s.send(request.encode())
                 # Print each responde:
-                print("Request: {0}".format(i + 1))
+                print("Response: {0}".format(i + 1))
                 print(s.recv(8192).decode())
                 s.close()
                 sleep(delay)
@@ -76,7 +76,7 @@ def make_request(host, port, request):
                 # Send:
                 s.send(request.encode())
                 # Print each responde:
-                print("Request: {0}".format(counter))
+                print("Response: {0}".format(counter))
                 print(s.recv(8192).decode())
                 counter += 1
                 s.close()
