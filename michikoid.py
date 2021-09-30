@@ -104,7 +104,11 @@ def build_request():
         if host.startswith(noise):
             host = host.replace(noise, "")
     # Get Port:
-    port = int(input("Target Port: "))
+    port = input("Target Port: ")
+    if port == "":
+        port = 80
+    else:
+        port = int(port)
     # Get User Agent:
     user_agent = input("User-Agent: ")
     if user_agent == "":
