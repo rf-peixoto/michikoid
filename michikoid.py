@@ -1,13 +1,12 @@
 #!/usr/bin/python
 # ------------------------------------------------- #
-# Version 1.0.0
-# ------------------------------------------------- #
 # Import libraries:
 import os
 import sys
 import socket
 import urllib.parse
 from time import sleep
+from datetime import datetime
 # ------------------------------------------------- #
 #  Banner                                           #
 # ------------------------------------------------- #
@@ -28,11 +27,20 @@ def print_menu(clear=True):
     print(" 3. Quit Michikoid")
 
 # ------------------------------------------------- #
+#  Get Date                                         #
+# ------------------------------------------------- #
+def get_date():
+    time = datetime.now()
+    return "{0}{1}{2}_{3}{4}".format(time.month, time.day, time.year, time.hour, time.minute)
+
+# ------------------------------------------------- #
 #  Make Request                                     #
 # ------------------------------------------------- #
 def make_request(host, port, request):
-    # Set number of requests:
+    # Prepare for output:
+    responses = []
     print("\n")
+    # Set number of requests:
     print("[+] Set the total number of requests")
     print(" * 0: Send continuously.")
     print(" * 1: Default")
@@ -51,26 +59,24 @@ def make_request(host, port, request):
         delay = float(delay)
 
     # Print Request:
-    print("\n")
     print("[+] Your Request:")
     print(request)
-    print("\n")
     try:
         if ammount > 0:
             for i in range(ammount):
+                print(" - Now on request number {0}.".format(i + 1))
                 # Prepare socket:
                 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                 # Connect:
                 s.connect((host, port))
                 # Send:
                 s.send(request.encode())
-                # Print each responde:
-                print("Response: {0}".format(i + 1))
-                print(s.recv(8192).decode())
+                # Save each responde:
+                responses.append("Response: {0}\n".format(i + 1) + s.recv(8192).decode())
                 s.close()
                 sleep(delay)
         elif ammount == 0:
-            print("\nSending requests continuously.")
+            print("Sending requests continuously.")
             counter = 1
             while True:
                 # Prepare socket:
@@ -79,13 +85,19 @@ def make_request(host, port, request):
                 s.connect((host, port))
                 # Send:
                 s.send(request.encode())
-                # Print each responde:
-                print("Response: {0}".format(counter))
-                print(s.recv(8192).decode())
+                # Save each response:
+                responses.append("Response: {0}\n".format(i + 1) + s.recv(8192).decode())
                 counter += 1
                 s.close()
                 sleep(delay)
-        print("\n[+] Done!")
+        # Output:
+        output = "michikoid_{0}.txt".format(get_date())
+        with open(output, "w") as fl:
+            for i in responses:
+                fl.write(i)
+        # Clean pool:
+        responses.clear()
+        print("[+] Done! Result exported on {0}.".format(output))
     except Exception as error:
         print(error)
         sys.exit()
@@ -94,6 +106,7 @@ def make_request(host, port, request):
 #  Build Request                                    #
 # ------------------------------------------------- #
 def build_request():
+    print("\n")
     # Get Method:
     method = input("Request Method: ").upper()
     if method == "":
