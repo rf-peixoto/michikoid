@@ -47,6 +47,8 @@ def make_request(host, port, request):
     delay = input(">>> ")
     if delay == "":
         delay = 0.5
+    else:
+        delay = float(delay)
 
     # Print Request:
     print("\n")
