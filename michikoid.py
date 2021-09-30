@@ -86,6 +86,7 @@ def make_request(host, port, request):
         print("\n[+] Done!")
     except Exception as error:
         print(error)
+        sys.exit()
 
 # ------------------------------------------------- #
 #  Build Request                                    #
@@ -145,6 +146,7 @@ def import_from_file():
         print("\n{0}\n".format(request))
     except Exception as error:
         print(error)
+        sys.exit()
     # Get and Clean Target URL:
     host = input("Target URL: ").lower()
     for noise in ["http://", "https://"]:
