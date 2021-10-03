@@ -191,7 +191,11 @@ def import_from_file():
         if host.startswith(noise):
             host = host.replace(noise, "")
     # Get Port:
-    port = int(input(Fore.RESET + "Target Port: " + Fore.YELLOW))
+    port = input(Fore.RESET + "Target Port: " + Fore.YELLOW)
+    if port == "":
+        port = 80
+    else:
+        port = int(port)
     print(Fore.RESET)
     # Send to Function:
     make_request(host, port, request)
