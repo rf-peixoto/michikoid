@@ -136,7 +136,7 @@ def build_request():
     payload = urllib.parse.quote_plus(input("Payload: "))
     content_length = len(payload)
     # Prepare Request:
-    request = "{0} / HTTP/1.0\r\n".format(method)
+    request = "{0} / HTTP/1.1\r\n".format(method)
     request += "Host: {0}\r\n".format(host)
     request += "User-Agent: {0}\r\n".format(user_agent)
     request += "Accept: text/html, application/xhtml+xml, application/xml;q=0.9,*/*;q=0.8\r\n"
