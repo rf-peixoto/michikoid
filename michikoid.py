@@ -59,7 +59,7 @@ def make_request(host, port, request):
         delay = float(delay)
 
     # Print Request:
-    print("[+] Your Request:")
+    print("\n[+] Your Request:")
     print(request)
     try:
         if ammount > 0:
@@ -91,7 +91,7 @@ def make_request(host, port, request):
                 s.close()
                 sleep(delay)
         # Output:
-        output = "michikoid_{0}.txt".format(get_date())
+        output = "{0}_{1}.txt".format(host, get_date())
         with open(output, "w") as fl:
             for i in responses:
                 fl.write(i)
