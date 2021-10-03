@@ -74,7 +74,7 @@ def make_request(host, port, request):
         delay = float(delay)
 
     # Print Request:
-    print(Fore.GREEN + "[+]" + Fore.RESET +  "Your Request:")
+    print(Fore.GREEN + "\n[+]" + Fore.RESET +  "Your Request:")
     print(Fore.YELLOW + request + Fore.RESET)
     try:
         if ammount > 0:
@@ -106,7 +106,7 @@ def make_request(host, port, request):
                 s.close()
                 sleep(delay)
         # Output:
-        output = "michikoid_{0}.txt".format(get_date())
+        output = "{0}_{1}.txt".format(host, get_date())
         with open(output, "w") as fl:
             for i in responses:
                 fl.write(i)
@@ -214,3 +214,4 @@ while True:
     else:
         print_menu()
         print(Fore.RED + " Invalid option!" + Fore.RESET)
+
