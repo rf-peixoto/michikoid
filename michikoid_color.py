@@ -26,7 +26,7 @@ colorama.init()
 # ------------------------------------------------- #
 # Menu
 # ------------------------------------------------- #
-banner = Fore.GREEN + """\n       __         _     __
+banner = Fore.BLUE + """\n       __         _     __
       / /_Michi  (_)___/ /
      / //_/ __ \/ / __  /
     / ,< / /_/ / / /_/ /
@@ -37,10 +37,10 @@ def print_menu(clear=True):
     if clear:
         os.system("cls" if os.name == "nt" else "clear")
     print(banner)
-    print(Fore.GREEN + "[+]" + Fore.RESET + " Welcome, " + Fore.YELLOW + "{0}".format(os.getenv("USER")) + Fore.RESET + ". Choose mode:" )
-    print(Fore.GREEN + " 1." + Fore.RESET + " Build Request")
-    print(Fore.GREEN + " 2." + Fore.RESET + " Import From File")
-    print(Fore.GREEN + " 3." + Fore.RESET + " Quit Michikoid")
+    print(Fore.BLUE + "[+]" + Fore.RESET + " Welcome, " + Fore.YELLOW + "{0}".format(os.getenv("USER")) + Fore.RESET + ". Choose mode:" )
+    print(Fore.BLUE + " 1." + Fore.RESET + " Build Request")
+    print(Fore.BLUE + " 2." + Fore.RESET + " Import From File")
+    print(Fore.BLUE + " 3." + Fore.RESET + " Quit Michikoid")
 
 # ------------------------------------------------- #
 # Get Date
@@ -56,25 +56,25 @@ def make_request(host, port, request):
     # Prepare for output:
     responses = []
     # Set number of requests:
-    print(Fore.GREEN + "[+]" + Fore.RESET + " Set the total number of requests")
+    print(Fore.BLUE + "[+]" + Fore.RESET + " Set the total number of requests")
     print(" * 0: Send continuously.")
     print(" * 1: Default")
-    ammount = input(Fore.GREEN + ">>> " + Fore.RESET)
+    ammount = input(Fore.BLUE + ">>> " + Fore.RESET)
     if ammount == "":
         ammount = 1
     else:
         ammount = int(ammount)
     # Set delay time:
-    print(Fore.GREEN + "[+]" + Fore.RESET +  " Set delay in seconds.")
+    print(Fore.BLUE + "[+]" + Fore.RESET +  " Set delay in seconds.")
     print(" * 0.5: Default")
-    delay = input(Fore.GREEN + ">>> " + Fore.RESET)
+    delay = input(Fore.BLUE + ">>> " + Fore.RESET)
     if delay == "":
         delay = 0.5
     else:
         delay = float(delay)
 
     # Print Request:
-    print(Fore.GREEN + "\n[+]" + Fore.RESET +  "Your Request:")
+    print(Fore.BLUE + "\n[+]" + Fore.RESET +  "Your Request:")
     print(Fore.YELLOW + request + Fore.RESET)
     try:
         if ammount > 0:
@@ -112,7 +112,7 @@ def make_request(host, port, request):
                 fl.write(i)
         # Clean pool:
         responses.clear()
-        print(Fore.GREEN + "[+]" + Fore.RESET + " Result exported on " + Fore.YELLOW +  "{0}".format(output) + Fore.RESET + ".")
+        print(Fore.BLUE + "[+]" + Fore.RESET + " Result exported on " + Fore.YELLOW +  "{0}".format(output) + Fore.RESET + ".")
     except Exception as error:
         print(Fore.WHITE + Back.RED)
         print(error)
@@ -205,7 +205,7 @@ def import_from_file():
 # ------------------------------------------------- #
 print_menu()
 while True:
-    option = input(Fore.GREEN + ">>> " + Fore.RESET)
+    option = input(Fore.BLUE + ">>> " + Fore.RESET)
     if option == "1":
         build_request()
         print_menu(clear=False)
