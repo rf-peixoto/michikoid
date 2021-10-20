@@ -37,7 +37,7 @@ def print_menu(clear=True):
     if clear:
         os.system("cls" if os.name == "nt" else "clear")
     print(banner)
-    print(Fore.BLUE + "[+]" + Fore.RESET + " Welcome, " + Fore.YELLOW + "{0}".format(os.getenv("USER")) + Fore.RESET + ". Choose mode:" )
+    print(Fore.BLUE + "[+]" + Fore.RESET + " Welcome, " + Fore.CYAN + "{0}".format(os.getenv("USER")) + Fore.RESET + ". Choose mode:" )
     print(Fore.BLUE + " 1." + Fore.RESET + " Build Request")
     print(Fore.BLUE + " 2." + Fore.RESET + " Import From File")
     print(Fore.BLUE + " 3." + Fore.RESET + " Quit Michikoid")
@@ -75,11 +75,11 @@ def make_request(host, port, request):
 
     # Print Request:
     print(Fore.BLUE + "\n[+]" + Fore.RESET +  "Your Request:")
-    print(Fore.YELLOW + request + Fore.RESET)
+    print(Fore.CYAN + request + Fore.RESET)
     try:
         if ammount > 0:
             for i in range(ammount):
-                print(" - Now on request number " + Fore.YELLOW + "{0}".format(i + 1) + Fore.RESET + ".")
+                print(" - Now on request number " + Fore.CYAN + "{0}".format(i + 1) + Fore.RESET + ".")
                 # Prepare socket:
                 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                 # Connect:
@@ -112,7 +112,7 @@ def make_request(host, port, request):
                 fl.write(i)
         # Clean pool:
         responses.clear()
-        print(Fore.BLUE + "[+]" + Fore.RESET + " Result exported on " + Fore.YELLOW +  "{0}".format(output) + Fore.RESET + ".")
+        print(Fore.BLUE + "[+]" + Fore.RESET + " Result exported on " + Fore.CYAN +  "{0}".format(output) + Fore.RESET + ".")
     except Exception as error:
         print(Fore.WHITE + Back.RED)
         print(error)
@@ -124,32 +124,32 @@ def make_request(host, port, request):
 # ------------------------------------------------- #
 def build_request():
     # Get Method:
-    method = input(Fore.RESET + "Request Method: " + Fore.YELLOW).upper()
+    method = input(Fore.RESET + "Request Method: " + Fore.CYAN).upper()
     if method == "":
         method = "GET"
     # Get and Clean Target URL:
-    host = input(Fore.RESET + "Target URL: " + Fore.YELLOW).lower()
+    host = input(Fore.RESET + "Target URL: " + Fore.CYAN).lower()
     for noise in ["http://", "https://"]:
         if host.startswith(noise):
             host = host.replace(noise, "")
     # Get Port:
-    port = input(Fore.RESET + "Target Port: " + Fore.YELLOW)
+    port = input(Fore.RESET + "Target Port: " + Fore.CYAN)
     if port == "":
         port = 80
     else:
         port = int(port)
     # Get User Agent:
-    user_agent = input(Fore.RESET + "User-Agent: " + Fore.YELLOW)
+    user_agent = input(Fore.RESET + "User-Agent: " + Fore.CYAN)
     if user_agent == "":
         user_agent = "Michikoid-Repeater"
     # Get Referer link:
-    referer = input(Fore.RESET + "Referer link: " + Fore.YELLOW).lower()
+    referer = input(Fore.RESET + "Referer link: " + Fore.CYAN).lower()
     if referer == "":
         referer = "no-referer-when-downgrade"
     # Get Cookie(s):
-    cookie = input(Fore.RESET + "Cookie(s): " + Fore.YELLOW)
+    cookie = input(Fore.RESET + "Cookie(s): " + Fore.CYAN)
     # Get Payload:
-    payload = urllib.parse.quote_plus(input(Fore.RESET + "Payload: " + Fore.YELLOW))
+    payload = urllib.parse.quote_plus(input(Fore.RESET + "Payload: " + Fore.CYAN))
     print(Fore.RESET)
     content_length = len(payload)
     # Prepare Request:
@@ -174,7 +174,7 @@ def build_request():
 # ------------------------------------------------- #
 def import_from_file():
     # Find and Load file:
-    filename = input(Fore.RESET + "Filename: " + Fore.YELLOW)
+    filename = input(Fore.RESET + "Filename: " + Fore.CYAN)
     try:
         with open(filename, "r") as fl:
             request = fl.read()
@@ -186,12 +186,12 @@ def import_from_file():
         print(Fore.RESET + Back.RESET)
         sys.exit()
     # Get and Clean Target URL:
-    host = input(Fore.RESET + "Target URL: " + Fore.YELLOW).lower()
+    host = input(Fore.RESET + "Target URL: " + Fore.CYAN).lower()
     for noise in ["http://", "https://"]:
         if host.startswith(noise):
             host = host.replace(noise, "")
     # Get Port:
-    port = input(Fore.RESET + "Target Port: " + Fore.YELLOW)
+    port = input(Fore.RESET + "Target Port: " + Fore.CYAN)
     if port == "":
         port = 80
     else:
@@ -218,4 +218,3 @@ while True:
     else:
         print_menu()
         print(Fore.RED + " Invalid option!" + Fore.RESET)
-
