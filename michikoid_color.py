@@ -27,11 +27,11 @@ colorama.init()
 # Menu
 # ------------------------------------------------- #
 banner = Fore.BLUE + """\n       __         _     __
-      / /_Michi  (_)___/ /
+      / /_{0}Michi{1}  (_)___/ /
      / //_/ __ \/ / __  /
     / ,< / /_/ / / /_/ /
    /_/|_|\____/_/\__,_/
-              Repeater\n""" + Fore.RESET
+              {0}Repeater\n""".format(Fore.CYAN, Fore.BLUE) + Fore.RESET
 
 def print_menu(clear=True):
     if clear:
