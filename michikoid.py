@@ -125,7 +125,7 @@ def build_request():
     # Get User Agent:
     user_agent = input("User-Agent: ")
     if user_agent == "":
-        user_agent = "Michikoid-Repeater"
+        user_agent = "Mozilla/5.0, Gecko/20100101 Michikoid-Repeater/1.1"
     # Get Referer link:
     referer = input("Referer link: ").lower()
     if referer == "":
