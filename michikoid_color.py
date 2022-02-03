@@ -76,6 +76,7 @@ def make_request(host, port, request):
     # Print Request:
     print(Fore.BLUE + "\n[+]" + Fore.RESET +  "Your Request:")
     print(Fore.CYAN + request + Fore.RESET)
+    print(Fore.RESET + "Press " + Fore.CYAN + "ENTER " + Fore.BLUE + " to go.\n" + Fore.RESET)
     try:
         if ammount > 0:
             for i in range(ammount):
