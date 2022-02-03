@@ -61,6 +61,7 @@ def make_request(host, port, request):
     # Print Request:
     print("\n[+] Your Request:")
     print(request)
+    print("Press ENTER to go.\n")
     try:
         if ammount > 0:
             for i in range(ammount):
