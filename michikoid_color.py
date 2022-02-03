@@ -110,7 +110,7 @@ def make_request(host, port, request):
         output = "{0}_{1}.txt".format(host, get_date())
         with open(output, "w") as fl:
             for i in responses:
-                fl.write(i)
+                fl.write(i + "\n")
         # Clean pool:
         responses.clear()
         print(Fore.BLUE + "[+]" + Fore.RESET + " Result exported on " + Fore.CYAN +  "{0}".format(output) + Fore.RESET + ".")
