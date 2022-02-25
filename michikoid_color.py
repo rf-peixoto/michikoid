@@ -17,12 +17,12 @@ import urllib.parse
 from time import sleep
 from datetime import datetime
 import colorama
-from colorama import Fore, Back
+from colorama import Fore, Back, Style
 # ------------------------------------------------- #
 # Initialize Colorama:
 # ------------------------------------------------- #
 colorama.init()
-
+print(Style.BRIGHT)
 # ------------------------------------------------- #
 # Menu
 # ------------------------------------------------- #
@@ -92,7 +92,7 @@ def make_request(host, port, request):
                 s.close()
                 sleep(delay)
         elif ammount == 0:
-            print(Fore.RED + "Sending requests continuously." + Fore.RESET)
+            print(Fore.RED + "[!] Sending requests continuously." + Fore.RESET)
             counter = 1
             while True:
                 # Prepare socket:
@@ -103,6 +103,8 @@ def make_request(host, port, request):
                 s.send(request.encode())
                 # Save each response:
                 responses.append("Response: {0}\n".format(counter) + s.recv(8192)    .decode())
+                output = responses[-1].split("\n")
+                print(Fore.CYAN + "{0} ".format(output[0]) + Fore.YELLOW + "{0}".format(output[1]) + Fore.RESET)
                 counter += 1
                 s.close()
                 sleep(delay)
@@ -219,3 +221,5 @@ while True:
     else:
         print_menu()
         print(Fore.RED + " Invalid option!" + Fore.RESET)
+# Clear terminal:
+print(Fore.Reset + Back.RESET + Style.RESET)
