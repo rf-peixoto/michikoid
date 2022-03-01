@@ -92,22 +92,25 @@ def make_request(host, port, request):
                 s.close()
                 sleep(delay)
         elif ammount == 0:
-            print(Fore.RED + "[!] Sending requests continuously." + Fore.RESET)
-            counter = 1
-            while True:
-                # Prepare socket:
-                s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                # Connect:
-                s.connect((host, port))
-                # Send:
-                s.send(request.encode())
-                # Save each response:
-                responses.append("Response: {0}\n".format(counter) + s.recv(8192)    .decode())
-                output = responses[-1].split("\n")
-                print(Fore.CYAN + "{0} ".format(output[0]) + Fore.YELLOW + "{0}".format(output[1]) + Fore.RESET)
-                counter += 1
-                s.close()
-                sleep(delay)
+            try:
+                print(Fore.RED + "[!] Sending requests continuously." + Fore.RESET)
+                counter = 1
+                while True:
+                    # Prepare socket:
+                    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                    # Connect:
+                    s.connect((host, port))
+                    # Send:
+                    s.send(request.encode())
+                    # Save each response:
+                    responses.append("Response: {0}\n".format(counter) + s.recv(8192)    .decode())
+                    output = responses[-1].split("\n")
+                    print(Fore.CYAN + "{0} ".format(output[0]) + Fore.YELLOW + "{0}".format(output[1]) + Fore.RESET)
+                    counter += 1
+                    s.close()
+                    sleep(delay)
+            except KeyboardInterrupt:
+                    print(Fore.BLUE + "[+] " + Fore.RESET + "Preparing to stop...")
         # Output:
         output = "{0}_{1}.txt".format(host, get_date())
         with open(output, "w") as fl:
