@@ -8,7 +8,7 @@ print("Loading Michikoid...")
 #   /_/|_|\____/_/\__,_/       #
 #               Repeater       #
 # ---------------------------- #
-#         Version: 1.5         #
+#         Version: 1.6         #
 # ---------------------------- #
 import os
 import sys
@@ -31,7 +31,7 @@ banner = Fore.BLUE + """\n       __         _     __
      / //_/ __ \/ / __  /
     / ,< / /_/ / / /_/ /
    /_/|_|\____/_/\__,_/
-              {0}Repeater\n""".format(Fore.CYAN, Fore.BLUE) + Fore.RESET
+              {0}Repeater 1.6.0\n""".format(Fore.CYAN, Fore.BLUE) + Fore.RESET
 
 def print_menu(clear=True):
     if clear:
@@ -207,7 +207,7 @@ def import_from_file():
     make_request(host, port, request)
 
 # ------------------------------------------------- #
-# Starting Point
+# Main Menu
 # ------------------------------------------------- #
 print_menu()
 while True:
@@ -219,10 +219,10 @@ while True:
         import_from_file()
         print_menu(clear=False)
     elif option == "3":
-        print(" Thank you and goodbye.")
+        print(" Thank you and goodbye. :)")
         sys.exit()
     else:
         print_menu()
         print(Fore.RED + " Invalid option!" + Fore.RESET)
-# Clear terminal:
+# Reset colors:
 print(Fore.Reset + Back.RESET + Style.RESET)
