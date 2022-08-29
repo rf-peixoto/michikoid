@@ -47,7 +47,7 @@ def print_menu(clear=True):
 # ------------------------------------------------- #
 def get_date():
     time = datetime.now()
-    return "{0}{1}{2}_{3}{4}".format(time.month, time.day, time.year, time.hour    , time.minute)
+    return "{0}{1}{2}_{3}{4}".format(time.month, time.day, time.year, time.hour, time.minute)
 
 # ------------------------------------------------- #
 # Make Request
@@ -65,7 +65,7 @@ def make_request(host, port, request):
     else:
         ammount = int(ammount)
     # Set delay time:
-    print(Fore.BLUE + "[+]" + Fore.RESET +  " Set delay in seconds.")
+    print(Fore.BLUE + "[+]" + Fore.RESET + " Set delay in seconds.")
     print(" * 0.5: Default")
     delay = input(Fore.BLUE + ">>> " + Fore.RESET)
     if delay == "":
@@ -74,7 +74,7 @@ def make_request(host, port, request):
         delay = float(delay)
 
     # Print Request:
-    print(Fore.BLUE + "\n[+]" + Fore.RESET +  "Your Request:")
+    print(Fore.BLUE + "\n[+]" + Fore.RESET + "Your Request:")
     print(Fore.CYAN + request + Fore.RESET)
     input(Fore.RESET + "Press " + Fore.CYAN + "ENTER" + Fore.RESET + " to go.\n" + Fore.RESET)
     try:
@@ -88,7 +88,7 @@ def make_request(host, port, request):
                 # Send:
                 s.send(request.encode())
                 # Save each responde:
-                responses.append("Response: {0}\n".format(i + 1) + s.recv(8192)    .decode())
+                responses.append("Response: {0}\n".format(i + 1) + s.recv(8192).decode())
                 s.close()
                 sleep(delay)
         elif ammount == 0:
@@ -103,7 +103,7 @@ def make_request(host, port, request):
                     # Send:
                     s.send(request.encode())
                     # Save each response:
-                    responses.append("Response: {0}\n".format(counter) + s.recv(8192)    .decode())
+                    responses.append("Response: {0}\n".format(counter) + s.recv(8192).decode())
                     output = responses[-1].split("\n")
                     print(Fore.CYAN + "{0} ".format(output[0]) + Fore.YELLOW + "{0}".format(output[1]) + Fore.RESET)
                     counter += 1
@@ -118,7 +118,7 @@ def make_request(host, port, request):
                 fl.write(i + "\n")
         # Clean pool:
         responses.clear()
-        print(Fore.BLUE + "[+]" + Fore.RESET + " Result exported on " + Fore.CYAN +  "{0}".format(output) + Fore.RESET + ".")
+        print(Fore.BLUE + "[+]" + Fore.RESET + " Result exported on " + Fore.CYAN + "{0}".format(output) + Fore.RESET + ".")
     except Exception as error:
         print(Fore.WHITE + Back.RED)
         print(error)
