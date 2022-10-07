@@ -8,7 +8,7 @@ print("Loading Michikoid...")
 #   /_/|_|\____/_/\__,_/       #
 #               Repeater       #
 # ---------------------------- #
-#         Version: 1.6         #
+#         Version: 1.6.1       #
 # ---------------------------- #
 import os
 import sys
@@ -147,7 +147,7 @@ def build_request():
     # Get User Agent:
     user_agent = input(Fore.RESET + "User-Agent: " + Fore.CYAN)
     if user_agent == "":
-        user_agent = "Mozilla/5.0, Gecko/20100101 Michikoid-Repeater/1.1"
+        user_agent = "Mozilla/5.0, Gecko/20100101 Michikoid-Repeater/1.6.1"
     # Get Referer link:
     referer = input(Fore.RESET + "Referer link: " + Fore.CYAN).lower()
     if referer == "":
