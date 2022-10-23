@@ -56,7 +56,7 @@ def make_request(host, port, request):
     # Prepare for output:
     responses = []
     # Set number of requests:
-    print(Fore.BLUE + "[+]" + Fore.RESET + " Set the total number of requests")
+    print(Fore.BLUE + "[+]" + Fore.RESET + " Set the number of requests")
     print(" * 0: Send continuously.")
     print(" * 1: Default")
     ammount = input(Fore.BLUE + ">>> " + Fore.RESET)
@@ -80,7 +80,7 @@ def make_request(host, port, request):
     try:
         if ammount > 0:
             for i in range(ammount):
-                print(" - Now on request number " + Fore.CYAN + "{0}".format(i + 1) + Fore.RESET + ".")
+                print(" - Now on request: " + Fore.CYAN + "{0}".format(i + 1) + Fore.RESET + ".")
                 # Prepare socket:
                 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                 # Connect:
